@@ -20,6 +20,7 @@ $headerFont: 14px;
 $regularFont: 16px;
 $h1Font: 45px;
 $h2Font: 30px;
+$tablet: 1170px;
 
 // mixins
 @mixin horizontal-line {
@@ -41,6 +42,7 @@ $h2Font: 30px;
   font-weight: 500;
   width: 205px;
   height: 64px;
+  cursor: pointer;
 }
 
 @mixin header {
@@ -72,6 +74,7 @@ $h2Font: 30px;
 html {
   height: 100%;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -97,11 +100,14 @@ a {
   padding-bottom: 20px;
   z-index: 3;
 
+  &__logo {
+    cursor: pointer;
+  }
+
   &__container {
     width: $containerWidth;
     display: flex;
     justify-content: space-between;
-    z-index: 3;
   }
 
   &__nav {
@@ -114,9 +120,8 @@ a {
       font-size: $headerFont;
       color: $darkGrey;
 
-      > li > a {
-        text-decoration: none;
-        color: inherit;
+      > li {
+        cursor: pointer;
       }
     }
   }
@@ -125,6 +130,10 @@ a {
     margin-top: 10px;
     display: flex;
     gap: 22px;
+
+    > div {
+      cursor: pointer;
+    }
   }
 
   &__like {
@@ -148,6 +157,13 @@ a {
       font-size: 8px;
       line-height: 9px;
     }
+  }
+}
+
+@media (max-width: $tablet) {
+  .header {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -283,6 +299,33 @@ a {
   }
 }
 
+// hero media
+@media (max-width: $tablet) {
+  .hero {
+    &__image {
+      width: 250px;
+      margin-top: 120px;
+
+      > .hero__price {
+        top: 430px;
+        left: 70px;
+
+        &:before {
+          display: none;
+        }
+      }
+
+      > .hero__diameter {
+        top: 400px;
+        left: 70px;
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 .popular {
   position: relative;
   background-color: $white;
@@ -321,6 +364,7 @@ a {
       font-weight: 500;
       font-size: $regularFont;
       line-height: 19px;
+      cursor: pointer;
 
       &::after {
         @include horizontal-line();
@@ -389,6 +433,7 @@ a {
   &__more {
     padding-left: 60px;
     position: relative;
+    cursor: pointer;
 
     &:before {
       @include horizontal-line();
@@ -396,6 +441,20 @@ a {
       background-color: #8b8371;
       top: 55%;
       left: 12px;
+    }
+  }
+}
+
+// popular media
+@media (max-width: $tablet) {
+  .popular {
+    height: 1600px;
+    &__watches {
+      flex-direction: column;
+    }
+
+    &__watchAll {
+      display: none;
     }
   }
 }
@@ -486,6 +545,34 @@ a {
     font-family: 'Prata';
     font-size: 12px;
     line-height: 16px;
+
+    > img {
+      cursor: pointer;
+    }
+  }
+}
+
+// quality media
+@media (max-width: $tablet) {
+  .quality {
+    &__container {
+      padding: 0 20px;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    &__description {
+      padding: 0;
+    }
+    &__ellipse_sm {
+      display: none;
+    }
+    &__ellipse_lg {
+      display: none;
+    }
+    &__square {
+      display: none;
+    }
   }
 }
 
@@ -532,12 +619,32 @@ a {
     font-size: $regularFont;
     line-height: 27px;
     color: $boldBlack;
+    cursor: pointer;
   }
 
   &__icons {
     display: flex;
     align-items: flex-end;
     gap: 18px;
+
+    > img {
+      cursor: pointer;
+    }
+  }
+}
+
+// news media
+@media (max-width: $tablet) {
+  .news {
+    &__container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    &__images {
+      &_lg {
+        display: none;
+      }
+    }
   }
 }
 
@@ -579,5 +686,18 @@ a {
     font-size: 12px;
     line-height: 14px;
     color: rgba(255, 255, 255, 0.75);
+
+    > div {
+      cursor: pointer;
+    }
+  }
+}
+
+// footer media
+@media (max-width: $tablet) {
+  .footer {
+    &__container {
+      gap: 23px;
+    }
   }
 }
